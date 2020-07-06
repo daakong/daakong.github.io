@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>BAD-SLAM调试 | DaKong&#39;sSpace</title>
+  <meta name="description" content="A Mars Permanent Resident" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="DaKong'sSpace">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+            
+            <h1 class="blog-title">DaKong'sSpace</h1>
+            <h2 class="blog-description">A Mars Permanent Resident</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2020-07-06T10:23:33.000Z" itemprop="datePublished">
+          2020-07-06
+      </time>
+    
+    
+    | 
+    <a href='/tags/SLAM/'>SLAM</a>
+    
+    
+</span>
+    <h1 class="post-title">BAD-SLAM调试</h1>
+    <section class="post-content">
+      <h2 id="BADSLAM-调试"><a href="#BADSLAM-调试" class="headerlink" title="BADSLAM 调试"></a>BADSLAM 调试</h2><blockquote>
+<p>成功在ubuntu18.04上跑通tag版本1.0.1的代码。 ubuntu16.04尚未测试。</p>
+<p>bad-slam版本1.1.0代码由于使用了较新的DLib库，在ubuntu上不支持。(?)</p>
+</blockquote>
+<h2 id="dependency-ubuntu-18-04"><a href="#dependency-ubuntu-18-04" class="headerlink" title="dependency: ubuntu 18.04"></a>dependency: ubuntu 18.04</h2><ul>
+<li><p>cmake </p>
+<p>建议先更新CMAKE版本，至少3.11+。以3.17为例。</p>
+<p>官网<a href="https://cmake.org/download/" target="_blank" rel="noopener">https://cmake.org/download/</a> 下载包(注意下载源码包而不是linux包)，并提取。</p>
+<p>3.17下载地址：<a href="https://github.com/Kitware/CMake/releases/download/v3.17.2/cmake-3.17.2.tar.gz" target="_blank" rel="noopener">https://github.com/Kitware/CMake/releases/download/v3.17.2/cmake-3.17.2.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf cmake-3.17.2.tar.gz</span><br><span class="line">chmod 777 cmake-3.17.2</span><br><span class="line">cd cmake-3.17.2</span><br><span class="line">sudo .&#x2F;bootstrap</span><br><span class="line">sudo make -j4</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">optional:</span><br><span class="line">cmake --version  </span><br><span class="line">#查看cmake版本</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>​     若报错缺少openssl库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssl</span><br><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure>
+
+<p>​     若C++报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc g++</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>Boost  1.54.0</p>
+<p>访问：<a href="https://www.boost.org/users/history/version_1_54_0.html" target="_blank" rel="noopener">https://www.boost.org/users/history/version_1_54_0.html</a> 下载1.54.0,并解包</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd boost_xxxx</span><br><span class="line">sudo chmod 777 bootstrap.sh</span><br><span class="line">sh .&#x2F;bootstrap.sh</span><br><span class="line">sudo .&#x2F;b2  #关键步骤</span><br><span class="line">sudo .&#x2F;b2 install --prefix&#x3D;&#x2F;usr&#x2F;local</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>DLib    （编译需要opencv,在opencv之后安装！）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># git clone https:&#x2F;&#x2F;github.com&#x2F;dorian3d&#x2F;DLib</span><br><span class="line"># 官方版本有问题，建议使用tkircher的改进版(https:&#x2F;&#x2F;github.com&#x2F;tkircher&#x2F;DLib)，对OpenCV的多数版本进行了适配</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;daakong&#x2F;DLib.git</span><br><span class="line">cd DLib</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j4</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li>Eigen 3.3.7：</li>
+</ul>
+<p>访问官网下载<a href="http://eigen.tuxfamily.org/index.php?title=Main_Page。" target="_blank" rel="noopener">http://eigen.tuxfamily.org/index.php?title=Main_Page。</a></p>
+<p>安装依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libopenblas-dev</span><br><span class="line">sudo apt-get install libx11-dev</span><br><span class="line">sudo apt-get install libgl1-mesa-dev </span><br><span class="line">sudo apt-get install libglu1-mesa-dev </span><br><span class="line">sudo apt-get install freeglut3-dev</span><br><span class="line">sudo apt-get install doxygen</span><br><span class="line"></span><br><span class="line">#安装GLEW</span><br><span class="line">sudo wget https:&#x2F;&#x2F;nchc.dl.sourceforge.net&#x2F;project&#x2F;glew&#x2F;glew&#x2F;2.1.0&#x2F;glew-2.1.0.tgz --no-check-certificate</span><br><span class="line">sudo tar -xzvf glew-2.1.0.tgz</span><br><span class="line">cd glew-2.1.0&#x2F;</span><br><span class="line">sudo make </span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig -v</span><br></pre></td></tr></table></figure>
+
+
+
+<p>安装eigen</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd eigen-xxxx</span><br><span class="line">sudo mkdir build</span><br><span class="line">cd build </span><br><span class="line">sudo cmake ..</span><br><span class="line">sudo make</span><br><span class="line">sudo make install </span><br><span class="line">sudo ldconfig -v</span><br></pre></td></tr></table></figure>
+
+<p> 访问eigen官网下载：<a href="http://eigen.tuxfamily.org/index.php?title=Main_Page，下载链接" target="_blank" rel="noopener">http://eigen.tuxfamily.org/index.php?title=Main_Page，下载链接</a></p>
+<ul>
+<li>g2o</li>
+</ul>
+<p>依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libsuitesparse-dev qtdeclarative5-dev qt5-qmake</span><br><span class="line">sudo apt-get install libqglviewer-dev</span><br></pre></td></tr></table></figure>
+
+<p>安装g2o：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;RainerKuemmerle&#x2F;g2o</span><br><span class="line">cd g20</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j4</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>GLEW</p>
+<p>已安装</p>
+</li>
+<li><p>GTest  有问题？？？</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;google&#x2F;googletest.git</span><br><span class="line"></span><br><span class="line">cd googletest&#x2F;</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j4</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>Opencv 3.2.0</p>
+<p>依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</span><br><span class="line">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev # 处理图像所需的包</span><br><span class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev</span><br><span class="line">sudo apt-get install libxvidcore-dev libx264-dev # 处理视频所需的包</span><br><span class="line">sudo apt-get install libatlas-base-dev gfortran # 优化opencv功能</span><br><span class="line">sudo apt-get install ffmpeg  </span><br><span class="line"> sudo apt-get install liblapacke-dev checkinstall</span><br><span class="line"> sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev</span><br><span class="line"> sudo apt-get install libgtk-3-dev</span><br><span class="line"> sudo apt-get install libgphoto2-dev</span><br><span class="line"> sudo apt-get -y install libavresample-dev</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<pre><code>wget https://github.com/opencv/opencv/archive/3.2.0.zip # 从github上直接下载或者clone也可
+
+cd opencv3.2.0   #解压之后
+mkdir build
+cd build
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+
+sudo make -j4
+sudo make install</code></pre><p> 如果icv下载出错，可以手动下载:</p>
+<p> 手动下载ippicv并且把他放到opencv-3.2.0/3rdparty/ippicv/downloads/目录下。<br> 重新cmake。下载地址：master branch内存有 </p>
+<p> 如果出现lapack错误可以将对应的opencv_lapack.h中第二行 改为：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;lapacke.h&quot;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>OpenGV</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;laurentkneip&#x2F;opengv</span><br><span class="line">cd opengv </span><br><span class="line">mkdir build &amp;&amp; cd build </span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>Qt 5.12.0</p>
+<p>cd到qt-opensource-linux-x64-5.8.0.run所在的目录下，在命令端口中输入安装命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo .&#x2F;qt-opensource-linux-x64-5.X.0.run</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgl1-mesa-dev</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>SuiteSparse</p>
+<p>使用apt-get安装即可。</p>
+</li>
+<li><p>CUDA （10.1,10.0经测试也可) 建议在OpenCV后安装。</p>
+<p>根据MS SENSOR的介绍安装cuda：</p>
+</li>
+</ul>
+<p>  安装CUDA CUDA的安装方式可以参考英伟达<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">CUDA官网</a>的教程，选择合适的版本进行安装。此外，还有官方的CUDA Installation [Guide for Linux]（<a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html）" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html）</a> 以及CUDA [Quick Start Guide]（<a href="https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html</a>) 可以参考。</p>
+<blockquote>
+<p>下面以2019年12月实验时使用的CUDA10.0.13的deb(local)包为例介绍流程。</p>
+</blockquote>
+<ul>
+<li><p>先检查CUDA Installation [Guide for Linux]（<a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html）" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html）</a> 上关于系统要求的说明，包括GPU,Linux，GCC版本，Kernal Heade rs。</p>
+</li>
+<li><p>进行安装步骤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i cuda-repo-&lt;distro&gt;_&lt;version&gt;_&lt;architecture&gt;.deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装pubilc GPG key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key add &#x2F;var&#x2F;cuda-repo-&lt;version&gt;&#x2F;7fa2af80.pub</span><br></pre></td></tr></table></figure>
+
+<p>for ubuntu 16.04</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --fetch-keys http:&#x2F;&#x2F;developer.download.nvidia.com&#x2F;compute&#x2F;cuda&#x2F;repos&#x2F;&lt;distro&gt;&#x2F;&lt;architecture&gt;&#x2F;7fa2af80.pub</span><br></pre></td></tr></table></figure>
+
+<p>Update and install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install cuda</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>随后进行post-installation操作，请参考installation guide中<a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions" target="_blank" rel="noopener">post-installation-actions部分</a>,注意最后需要重启一次电脑。再次启动Kinect驱动时会显示显卡的型号信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-10.1&#x2F;bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-10.1&#x2F;lib64\</span><br><span class="line">                       $&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以将以上两句输出到bashrc中。</p>
+</li>
+</ul>
+<hr>
+<p>编译和运行：</p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><ol>
+<li><p>编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir build_RelWithDebInfo</span><br><span class="line">cd build_RelWithDebInfo</span><br><span class="line">cmake -DCMAKE_BUILD_TYPE&#x3D;RelWithDebInfo -DCMAKE_CUDA_FLAGS&#x3D;&quot;-arch&#x3D;sm_61&quot; ..</span><br><span class="line">make -j badslam  # Reduce the number of threads if running out of memory, e.g., -j3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>trouble shooting</p>
+<ul>
+<li><p>QT5/QT5X11找不到，CMAKELIST手动标记库位置</p>
+</li>
+<li><p>未生成badslam， CUDA没找到，请将CUDA位置export到bashrc</p>
+</li>
+<li><p>关于g2o的报错，需要先安装suitesparse。可以重新编译安装g2o，即可解决。</p>
+</li>
+<li><p>关于第三方程序库的报错，可以重新编译安装。</p>
+</li>
+<li><p>libGLEW的动态库问题：在ld中加入libGLEW的位置：</p>
+<p>  在 /etc/ld.so.conf 中加入/usr/lib64, 随后使用指令刷新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig -v</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>D.KONG</h4>
+    <p></p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://www.kongda.space/2020/07/06/BADSLAM调试/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.kongda.space/2020/07/06/BADSLAM调试/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.kongda.space/2020/07/06/BADSLAM调试/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2020/07/06/REALSENSE%E9%A9%B1%E5%8A%A8/">
+        ← Realsense驱动 D435
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2020/07/05/init-file/">
+        init-file →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">DaKong'sSpace</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/" target="_blank" rel="noopener">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

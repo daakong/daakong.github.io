@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Realsense驱动 D435 | DaKong&#39;sSpace</title>
+  <meta name="description" content="A Mars Permanent Resident" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="DaKong'sSpace">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+            
+            <h1 class="blog-title">DaKong'sSpace</h1>
+            <h2 class="blog-description">A Mars Permanent Resident</h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2020-07-06T10:29:33.000Z" itemprop="datePublished">
+          2020-07-06
+      </time>
+    
+    
+    | 
+    <a href='/tags/Driver/'>Driver</a>
+    
+    
+</span>
+    <h1 class="post-title">Realsense驱动 D435</h1>
+    <section class="post-content">
+      <h1 id="Realsense-D435i使用方法"><a href="#Realsense-D435i使用方法" class="headerlink" title="Realsense D435i使用方法"></a>Realsense D435i使用方法</h1><ul>
+<li><p>Prepare：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev</span><br></pre></td></tr></table></figure>
+
+<p>针对ubuntu16：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libglfw3-dev</span><br></pre></td></tr></table></figure>
+
+<p>针对ubuntu18：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>下载librealsense的源代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;IntelRealSense&#x2F;librealsense.git</span><br><span class="line">或</span><br><span class="line">git clone  https:&#x2F;&#x2F;e.coding.net&#x2F;dakong&#x2F;drivers&#x2F;realsense-driver.git</span><br></pre></td></tr></table></figure>
+
+<p>Run Intel Realsense permissions script from librealsense root directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;scripts&#x2F;setup_udev_rules.sh</span><br></pre></td></tr></table></figure>
+
+<p>Build and apply patched kernel modules for:<br> * <strong>Ubuntu 14/16/18 with LTS kernel</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;scripts&#x2F;patch-realsense-ubuntu-lts.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<em>librealsense</em> root文件夹下建立build文件夹，并进入build</p>
+<p>Run CMake:</p>
+<ul>
+<li><p><code>cmake ../</code> - The default build is set to produce the core shared object and unit-tests binaries in Debug mode. Use <code>-DCMAKE_BUILD_TYPE=Release</code> to build with optimizations.</p>
+</li>
+<li><p><code>cmake ../ -DBUILD_EXAMPLES=true</code> - Builds <em>librealsense</em> along with the demos and tutorials</p>
+</li>
+<li><p><code>cmake ../ -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=false</code> - For systems without OpenGL or X11 build only textual examples</p>
+</li>
+<li><p>Recompile and install <em>librealsense</em> binaries:</p>
+<p> <code>sudo make uninstall &amp;&amp; make clean &amp;&amp; make &amp;&amp; sudo make install</code></p>
+</li>
+</ul>
+</li>
+<li><p>touble shooting：</p>
+</li>
+</ul>
+<p>参考<a href="https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md" target="_blank" rel="noopener">https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md</a></p>
+<ul>
+<li><p>安装ROS realsense：</p>
+<ul>
+<li><p>Dependency：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ros-kinetic-cv-bridge -y</span><br><span class="line">sudo apt-get install ros-kinetic-image-transport</span><br><span class="line">sudo apt-get install ros-kinetic-tf -y</span><br><span class="line">sudo apt-get install ros-kinetic-diagnostic-updater -y</span><br><span class="line">sudo apt-get install ros-kinetic-ddynamic-reconfigure -y</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* Create a [catkin](http://wiki.ros.org/catkin#Installing_catkin) workspace</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~&#x2F;catkin_ws&#x2F;src</span><br><span class="line">cd ~&#x2F;catkin_ws&#x2F;src&#x2F;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Clone the latest Intel® RealSense™ ROS from <a href="https://github.com/intel-ros/realsense/releases" target="_blank" rel="noopener">here</a> into ‘catkin_ws/src/‘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;IntelRealSense&#x2F;realsense-ros.git</span><br><span class="line">或</span><br><span class="line">git clone https:&#x2F;&#x2F;e.coding.net&#x2F;dakong&#x2F;drivers&#x2F;realsense-driver.git</span><br><span class="line"> (上次clone已经完成，ros包已经包含，可以跳过这一步）</span><br><span class="line">cd realsense-ros&#x2F;</span><br><span class="line">git checkout &#96;git tag | sort -V | grep -P &quot;^\d+\.\d+\.\d+&quot; | tail -1&#96;</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure></li>
+<li><p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">catkin_init_workspace</span><br><span class="line">cd ..</span><br><span class="line">catkin_make clean</span><br><span class="line">catkin_make -DCATKIN_ENABLE_TESTING&#x3D;False -DCMAKE_BUILD_TYPE&#x3D;Release</span><br><span class="line">catkin_make install</span><br><span class="line">echo &quot;source ~&#x2F;catkin_ws&#x2F;devel&#x2F;setup.bash&quot; &gt;&gt; ~&#x2F;.bashrc</span><br><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roslaunch realsense2_camera rs_camera.launch</span><br></pre></td></tr></table></figure>
+
+<p>用法细节参考：</p>
+<p><a href="https://github.com/IntelRealSense/realsense-ros" target="_blank" rel="noopener">https://github.com/IntelRealSense/realsense-ros</a></p>
+</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>D.KONG</h4>
+    <p></p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://www.kongda.space/2020/07/06/REALSENSE驱动/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.kongda.space/2020/07/06/REALSENSE驱动/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://www.kongda.space/2020/07/06/REALSENSE驱动/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2020/07/06/BADSLAM%E8%B0%83%E8%AF%95/">
+        BAD-SLAM调试 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">DaKong'sSpace</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/" target="_blank" rel="noopener">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
