@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://daakong.github.io</id>
+    <title>Da Kong （孔达）</title>
+    <updated>2024-10-25T17:08:25.537Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://daakong.github.io"/>
+    <link rel="self" href="https://daakong.github.io/atom.xml"/>
+    <subtitle>Da Kong&apos;s personal homepage</subtitle>
+    <logo>https://daakong.github.io/images/avatar.png</logo>
+    <icon>https://daakong.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, Da Kong （孔达）</rights>
+    <entry>
+        <title type="html"><![CDATA[News]]></title>
+        <id>https://daakong.github.io/post/news/</id>
+        <link href="https://daakong.github.io/post/news/">
+        </link>
+        <updated>2023-05-24T16:36:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>2024-10-1: Our paper &quot;Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees&quot; has been accepted to ISRR 2024.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>2024-10-1: Our paper &quot;Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees&quot; has been accepted to ISRR 2024.</p>
+<!-- more -->
+<p>2023-5-25: I will join the <a href="https://anpl-technion.github.io/">ANPL lab</a> at Technion - Israel Institute of Technology.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Da Kong 孔达]]></title>
+        <id>https://daakong.github.io/post/about/</id>
+        <link href="https://daakong.github.io/post/about/">
+        </link>
+        <updated>2019-01-25T11:09:48.000Z</updated>
+        <summary type="html"><![CDATA[<p>Hey! My name is Da Kong. I am now a PhD student in the <a href="https://anpl-technion.github.io/">ANPL</a> lab at Technion, supervised by <a href="https://vindelman.net.technion.ac.il/">Prof. Vadim Indelman</a>).</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Hey! My name is Da Kong. I am now a PhD student in the <a href="https://anpl-technion.github.io/">ANPL</a> lab at Technion, supervised by <a href="https://vindelman.net.technion.ac.il/">Prof. Vadim Indelman</a>).</p>
+<!-- more -->
+<p>My research interest focuses on robotics navigation and SLAM. I am working on active SLAM, POMDP, and belief space planning.</p>
+<p>I used to study in the Intelligent Autonomous System Lab at Zhejiang University, supervised by <a href="https://person.zju.edu.cn/en/zhangyu">Prof. Yu Zhang</a>. I also worked closely with <a href="https://weichnn.github.io/">Dr. Weichen Dai</a>, now at Hangzhou Dianzi University.<br>
+<img src="https://daakong.github.io/post-images/1684948353529.png" alt="1" loading="lazy"></p>
+]]></content>
+    </entry>
+</feed>
