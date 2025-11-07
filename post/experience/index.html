@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Experience | Da Kong （孔达）</title>
+<link rel="shortcut icon" href="https://daakong.github.io/favicon.ico?v=1762535125399">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://daakong.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Experience | Da Kong （孔达） - Atom Feed" href="https://daakong.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Education:
+
+
+Technion-Israel Institute of Technology
+2023 -
+Phd Student, Technion Autonomous Systems Program
+Advisor:  P..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://daakong.github.io">
+  <img class="avatar" src="https://daakong.github.io/images/avatar.png?v=1762535125399" alt="">
+  </a>
+  <h1 class="site-title">
+    Da Kong （孔达）
+  </h1>
+  <p class="site-description">
+    Da Kong's personal homepage
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://daakong.github.io/post/about" class="menu">
+          Bio
+        </a>
+      
+    
+      
+        <a href="https://daakong.github.io/post/publication" class="menu">
+          Publication
+        </a>
+      
+    
+      
+        <a href="https://daakong.github.io/post/experience" class="menu">
+          Education
+        </a>
+      
+    
+      
+        <a href="mailto:hi@kongda.space" class="menu" target="_blank">
+          Email
+        </a>
+      
+    
+      
+        <a href="https://scholar.google.com/citations?user=Ne-l-5MAAAAJ" class="menu" target="_blank">
+          Google Scholar
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Experience
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-05-23
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="education">Education:</h1>
+<ul>
+<li>
+<p><em><strong>Technion-Israel Institute of Technology</strong></em><br>
+2023 -<br>
+Phd Student, Technion Autonomous Systems Program<br>
+Advisor:  <a href="https://vindelman.net.technion.ac.il/">Prof. Vadim Indelman</a>)<br>
+Research Topic: Simplification of POMDP with Adaptive Structures and Performance Guarantees</p>
+</li>
+<li>
+<p><em><strong>Zhejiang University</strong></em><br>
+2019 - 2022<br>
+<em>Master of Engineering (MSc.) with honor</em>, Control Science and Engineering (Robotics)<br>
+Advisor: <a href="https://person.zju.edu.cn/en/zhangyu">Prof. Yu Zhang</a><br>
+Degree Thesis: Robot Localization based on Active Lighting Sensors</p>
+</li>
+<li>
+<p><em><strong>University of Edinburgh</strong></em><br>
+2017<br>
+Visiting Student</p>
+</li>
+<li>
+<p><em><strong>Nanjing University of Aeronautics and Astronautics</strong></em><br>
+2015 - 2019<br>
+<em>Bachelor of Engineering</em>, Automation Engineering,</p>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#education">Education:</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://daakong.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

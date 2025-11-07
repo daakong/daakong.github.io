@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://daakong.github.io</id>
+    <title>Da Kong （孔达）</title>
+    <updated>2025-11-07T17:20:27.212Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://daakong.github.io"/>
+    <link rel="self" href="https://daakong.github.io/atom.xml"/>
+    <subtitle>Da Kong&apos;s personal homepage</subtitle>
+    <logo>https://daakong.github.io/images/avatar.png</logo>
+    <icon>https://daakong.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2025, Da Kong （孔达）</rights>
+    <entry>
+        <title type="html"><![CDATA[Da Kong 孔达]]></title>
+        <id>https://daakong.github.io/post/about/</id>
+        <link href="https://daakong.github.io/post/about/">
+        </link>
+        <updated>2025-01-01T11:09:48.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>Welcome!</strong></p>
+<p>I'm Da Kong, currently a PhD student at the <a href="https://anpl-technion.github.io/">ANPL</a> lab at Technion, under the supervision of <a href="https://vindelman.net.technion.ac.il/">Prof. Vadim Indelman</a>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>Welcome!</strong></p>
+<p>I'm Da Kong, currently a PhD student at the <a href="https://anpl-technion.github.io/">ANPL</a> lab at Technion, under the supervision of <a href="https://vindelman.net.technion.ac.il/">Prof. Vadim Indelman</a>.</p>
+<!-- more -->
+<p>My primary research interests lie in the fields of SLAM (Simultaneous Localization and Mapping) and robotics navigation. I am actively working on active SLAM and POMDP (Partially Observable Markov Decision Processes).</p>
+<p>Prior to joining Technion, I studied in the Intelligent Autonomous System Lab at Zhejiang University, where I was supervised by <a href="https://person.zju.edu.cn/en/zhangyu">Prof. Yu Zhang</a>. I also collaborated closely with <a href="https://weichnn.github.io/">Dr. Weichen Dai</a>, who is now at Hangzhou Dianzi University.</p>
+<figure data-type="image" tabindex="1"><img src="https://daakong.github.io/post-images/1684948353529.png" alt="1" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[News]]></title>
+        <id>https://daakong.github.io/post/news/</id>
+        <link href="https://daakong.github.io/post/news/">
+        </link>
+        <updated>2023-05-24T01:36:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>2024-10-1: Our paper &quot;Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees&quot; has been accepted to ISRR 2024.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>2024-10-1: Our paper &quot;Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees&quot; has been accepted to ISRR 2024.</p>
+<!-- more -->
+<p>2023-5-25: I will join the <a href="https://anpl-technion.github.io/">ANPL lab</a> at Technion - Israel Institute of Technology.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Publication]]></title>
+        <id>https://daakong.github.io/post/publication/</id>
+        <link href="https://daakong.github.io/post/publication/">
+        </link>
+        <updated>2023-05-18T15:27:45.000Z</updated>
+        <summary type="html"><![CDATA[<ul>
+<li>
+<p><strong>Da Kong</strong> and Vadim Indelman. “Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees.” In International Symposium of Robotics Research (ISRR), Dec. 2024. arXiv: <a href="https://arxiv.org/abs/2410.07630">2410.07630</a>.</p>
+</li>
+<li>
+<p><strong>Da Kong</strong>, Yu Zhang, and Weichen Dai. “Direct Near-Infrared-Depth Visual SLAM with Active Lighting.” IEEE Robotics and Automation Letters (with IROS), 2021. DOI: <a href="https://doi.org/10.1109/lra.2021.3096741">10.1109/LRA.2021.3096741</a>.</p>
+</li>
+<li>
+<p>Weichen Dai, Yu Zhang, Shenzhou Chen, Donglei Sun, and <strong>Da Kong</strong>. “A Multi-spectral Dataset for Evaluating Motion Estimation Systems.” Proceedings of the IEEE International Conference on Robotics and Automation (ICRA), 2021, Xi’an, China. arXiv: <a href="https://arxiv.org/abs/2007.00622">2007.00622</a>. DOI: <a href="https://doi.org/10.1109/ICRA48506.2021.9561906">10.1109/ICRA48506.2021.9561906</a>.</p>
+</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p><strong>Da Kong</strong> and Vadim Indelman. “Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees.” In International Symposium of Robotics Research (ISRR), Dec. 2024. arXiv: <a href="https://arxiv.org/abs/2410.07630">2410.07630</a>.</p>
+</li>
+<li>
+<p><strong>Da Kong</strong>, Yu Zhang, and Weichen Dai. “Direct Near-Infrared-Depth Visual SLAM with Active Lighting.” IEEE Robotics and Automation Letters (with IROS), 2021. DOI: <a href="https://doi.org/10.1109/lra.2021.3096741">10.1109/LRA.2021.3096741</a>.</p>
+</li>
+<li>
+<p>Weichen Dai, Yu Zhang, Shenzhou Chen, Donglei Sun, and <strong>Da Kong</strong>. “A Multi-spectral Dataset for Evaluating Motion Estimation Systems.” Proceedings of the IEEE International Conference on Robotics and Automation (ICRA), 2021, Xi’an, China. arXiv: <a href="https://arxiv.org/abs/2007.00622">2007.00622</a>. DOI: <a href="https://doi.org/10.1109/ICRA48506.2021.9561906">10.1109/ICRA48506.2021.9561906</a>.</p>
+</li>
+</ul>
+<!-- more -->
+<ul>
+<li>
+<p>Ying Liu, Junyi Tao, <strong>Da Kong</strong>, Yu Zhang, and Ping Li. “A Visual Compass Based on Point and Line Features for UAV High-Altitude Orientation Estimation.” Remote Sensing, 2022.</p>
+</li>
+<li>
+<p>Liyang Zheng, Yuheng Zha, <strong>Da Kong</strong>, Hanqing Yang, and Yu Zhang. “Multi-Branch Angle-Aware Spatio-Temporal Graph Convolutional Neural Network for Model-Based Gait Recognition.” IET Cyber-Systems and Robotics, 2022.</p>
+</li>
+<li>
+<p>Weichen Dai, Shenzhou Chen, Zhaoyang Huang, Yan Xu, and <strong>Da Kong</strong>. “LiDAR Intensity Completion: Fully Exploiting the Message from LiDAR Sensors.” Sensors, 2022.</p>
+</li>
+<li>
+<p>Junyi Tao, Weichen Dai, <strong>Da Kong</strong>, Jiayan Wan, Bin He, and Yu Zhang. “Drift-Free Localization Using Prior Cross-Source Map for Indoor Low-Light Environments.” IET Cyber-Systems and Robotics, 2023.</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+</feed>
