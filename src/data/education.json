@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "institution": "Technion – Israel Institute of Technology",
+      "degree": "PhD Student, Autonomous Navigation and Perception Lab",
+      "period": "2023-10 - Present",
+      "advisor": "Prof. Vadim Indelman",
+      "topic": "Simplification of POMDP with adaptive structures and performance guarantees (expected completion: 2027-10)"
+    },
+    {
+      "institution": "Zhejiang University",
+      "degree": "M.Eng. (with honor), Control Science and Engineering",
+      "period": "2019-09 - 2022-03",
+      "advisor": "Prof. Yu Zhang",
+      "thesis": "Robot Localization based on Active Lighting Sensors"
+    },
+    {
+      "institution": "University of Edinburgh",
+      "degree": "Visiting Student",
+      "period": "2017-09 - 2017-12"
+    },
+    {
+      "institution": "Nanjing University of Aeronautics and Astronautics",
+      "degree": "Bachelor of Engineering, Automation Engineering",
+      "period": "2015-09 - 2019-06"
+    }
+  ]
+}

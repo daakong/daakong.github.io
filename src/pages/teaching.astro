@@ -1,0 +1,32 @@
+---
+import AcademicLayout from '../layouts/AcademicLayout.astro'
+import SectionTitle from '../components/SectionTitle.astro'
+import teachingData from '../data/teaching.json'
+
+const items = teachingData.items
+const hasItems = items && items.length > 0
+---
+
+<AcademicLayout title="Teaching" description="Teaching and mentoring records for Da Kong.">
+  <SectionTitle title="Teaching" subtitle="Courses, supervision, and seminars" />
+
+  {hasItems ? (
+    <section class="grid gap-4 md:grid-cols-2">
+      {items.map((item) => (
+        <article class="card">
+          <p class="section-title">{item.period}</p>
+          <h3 class="mt-1 font-display text-xl font-semibold">{item.course}</h3>
+          <p class="mt-2 text-sm text-slate-700">{item.role} · {item.institution}</p>
+          <p class="mt-3 text-sm text-slate-700">{item.notes}</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {item.topics.map((topic) => <span class="chip">{topic}</span>)}
+          </div>
+        </article>
+      ))}
+    </section>
+  ) : (
+    <section class="card">
+      <p class="text-sm text-slate-700">Teaching records will be published here once added.</p>
+    </section>
+  )}
+</AcademicLayout>

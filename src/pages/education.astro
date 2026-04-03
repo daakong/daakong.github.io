@@ -1,0 +1,11 @@
+---
+import AcademicLayout from '../layouts/AcademicLayout.astro'
+import SectionTitle from '../components/SectionTitle.astro'
+import Timeline from '../components/Timeline.astro'
+import educationData from '../data/education.json'
+---
+
+<AcademicLayout title="Education" description="Education history and academic experience.">
+  <SectionTitle title="Education" subtitle="Research training and academic background" />
+  <Timeline items={educationData.items} />
+</AcademicLayout>

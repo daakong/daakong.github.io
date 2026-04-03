@@ -1,0 +1,75 @@
+---
+import AcademicLayout from '../layouts/AcademicLayout.astro'
+import SectionTitle from '../components/SectionTitle.astro'
+import profile from '../data/profile.json'
+---
+
+<AcademicLayout title="About" description="Biography and research interests of Da Kong.">
+  <SectionTitle title="About" subtitle={profile.nameDisplay} />
+
+  <section class="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+    <div>
+      <div class="card">
+        <img src="/post-images/1684948353529.png" alt="Da Kong" class="mb-5 w-full rounded-xl" />
+        {profile.summary.map((paragraph) => <p class="mt-3 text-slate-700">{paragraph}</p>)}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="font-display text-xl font-semibold">Contact & Links</h3>
+      <p class="mt-2 text-sm text-slate-500">Academic profile and preferred contact channels.</p>
+      <dl class="mt-5 space-y-4 text-sm">
+        <div>
+          <dt class="text-xs uppercase tracking-[0.15em] text-slate-500">Google Scholar</dt>
+          <dd class="mt-1">
+            <a class="rounded-md px-2 py-1 transition-colors hover:bg-slate-50 hover:text-slate-900" href={profile.links['Google Scholar']} target="_blank" rel="noreferrer">
+              Scholar Profile
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-[0.15em] text-slate-500">ANPL Lab</dt>
+          <dd class="mt-1">
+            <a class="rounded-md px-2 py-1 transition-colors hover:bg-slate-50 hover:text-slate-900" href={profile.links.ANPL} target="_blank" rel="noreferrer">
+              anpl-technion.github.io
+            </a>
+          </dd>
+        </div>
+        <div class="grid gap-1">
+          <dt class="text-xs uppercase tracking-[0.15em] text-slate-500">Institution</dt>
+          <dd class="text-slate-700">{profile.organization}</dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-[0.15em] text-slate-500">Location</dt>
+          <dd class="text-slate-700">{profile.location}</dd>
+        </div>
+      </dl>
+      <div class="mt-6">
+        <a
+          id="email-btn"
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+          class="rounded-full border border-slate-200 px-3 py-1.5 text-xs transition-colors hover:bg-slate-900 hover:text-white"
+        >
+          Email
+        </a>
+      </div>
+      <script is:inline>
+        (() => {
+        const toText = (codes) => codes.map((code) => String.fromCharCode(code)).join('')
+        const safeEmail = toText([
+          104, 105, 64, 107, 111, 110, 103, 100, 97, 46, 115, 112, 97, 99, 101
+        ])
+
+        const emailBtn = document.querySelector('#email-btn')
+
+        if (emailBtn) {
+          emailBtn.textContent = `Email: ${safeEmail}`
+          emailBtn.setAttribute('href', `mailto:${safeEmail}`)
+        }
+        })()
+      </script>
+    </div>
+  </section>
+</AcademicLayout>

@@ -1,0 +1,122 @@
+---
+import AcademicLayout from '../../layouts/AcademicLayout.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import publicationsData from '../../data/publications.json'
+
+export async function getStaticPaths() {
+  return [{ params: { type: 'journal' } }, { params: { type: 'conference' } }, { params: { type: 'other' } }]
+}
+
+const rawType = Astro.params.type || 'all'
+const validTypes = new Set(['all', 'journal', 'conference', 'other'])
+const activeType = validTypes.has(rawType) ? rawType : 'all'
+
+const allItems = [...publicationsData.items].sort((a, b) => b.year - a.year)
+const items = activeType === 'all' ? allItems : allItems.filter((item) => item.type === activeType)
+const total = allItems.length
+const shown = items.length
+
+const label =
+  shown && shown === total
+    ? `All ${total} publication records`
+    : shown === 0
+      ? `No publications found`
+      : `Showing ${shown} of ${total} publication records`
+
+const filters = [
+  { label: 'All', value: 'all' },
+  { label: 'Journal', value: 'journal' },
+  { label: 'Conference', value: 'conference' },
+  { label: 'Other', value: 'other' },
+]
+
+const filterHref = (value) => (value === 'all' ? '/publications' : `/publications/${value}`)
+const typeLabel = {
+  conference: 'Conference',
+  journal: 'Journal',
+  other: 'Other',
+}
+---
+
+<AcademicLayout title="Publications" description="Publications list for Da Kong.">
+  <SectionTitle title="Publications" subtitle={label} />
+
+  <div class="mb-6 flex flex-wrap gap-2">
+    {filters.map((filter) => (
+      <a
+        href={filterHref(filter.value)}
+        class:list={[
+          'rounded-full px-3 py-1 text-sm',
+          activeType === filter.value ? 'bg-slate-900 text-white' : 'border border-slate-200 text-slate-700',
+        ]}
+      >
+        {filter.label}
+      </a>
+      ))}
+  </div>
+
+  {shown === 0 ? (
+    <section class="card">
+      <p class="text-sm text-slate-700">
+        No publications in this category yet. Choose another filter to see more.
+      </p>
+    </section>
+  ) : null}
+
+  {shown === 0 ? null : (
+    <section class="card">
+      <div class="overflow-x-auto">
+        <table class="min-w-full border-collapse">
+          <thead>
+            <tr class="text-left text-xs uppercase tracking-wide text-slate-500">
+              <th class="border-b border-slate-200 py-3 pr-4">Year</th>
+              <th class="border-b border-slate-200 py-3 pr-4">Type</th>
+              <th class="border-b border-slate-200 py-3 pr-4">Title</th>
+              <th class="border-b border-slate-200 py-3 pr-4">Authors</th>
+              <th class="border-b border-slate-200 py-3 pr-4">Venue</th>
+              <th class="border-b border-slate-200 py-3">Links</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item) => (
+              <tr class="border-b border-slate-100 last:border-b-0">
+                <td class="py-3 pr-4 align-top text-sm font-medium">{item.year}</td>
+                <td class="py-3 pr-4 align-top text-sm">{typeLabel[item.type] || item.type}</td>
+                <td class="max-w-lg py-3 pr-4 align-top text-sm font-medium text-slate-900">{item.title}</td>
+                <td class="py-3 pr-4 align-top text-sm text-slate-700">
+                  {item.authors.map((author, index) => (
+                    <span>
+                      {author === 'Da Kong' ? <strong>{author}</strong> : author}
+                      {index < item.authors.length - 1 ? ', ' : ''}
+                    </span>
+                  ))}
+                </td>
+                <td class="py-3 pr-4 align-top text-sm text-slate-700">
+                  <p>{item.venue}</p>
+                </td>
+                <td class="py-3 align-top">
+                  {item.links && item.links.length ? (
+                    <div class="flex flex-wrap gap-2">
+                      {item.links.map((link) => (
+                        <a
+                          class="rounded-full border border-slate-200 px-3 py-1 text-xs"
+                          href={link.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    <span class="text-xs text-slate-400">—</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+</AcademicLayout>

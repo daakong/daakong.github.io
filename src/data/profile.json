@@ -1,0 +1,27 @@
+{
+  "name": "Da Kong",
+  "nameZh": "孔达",
+  "nameDisplay": "Da Kong (孔达)",
+  "title": "PhD Student and Robotics Researcher",
+  "organization": "Autonomous Navigation and Perception Lab, Technion – Israel Institute of Technology",
+  "email": "hi@kongda.space",
+  "avatar": "/images/avatar.png",
+  "summary": [
+    "I'm Da Kong, a PhD student and robotics researcher at Technion – Israel Institute of Technology, working in the Autonomous Navigation and Perception Lab with Prof. Vadim Indelman.",
+    "My research focuses on belief-space planning, POMDP simplification, SLAM, and robot navigation. Current doctoral work studies safe replanning and computational guarantees for uncertainty-aware planning.",
+    "I have research training in active lighting SLAM, perception datasets, and motion-estimation evaluation."
+  ],
+  "researchInterests": [
+    "Belief Space Planning",
+    "POMDP",
+    "Simultaneous Localization and Mapping (SLAM)",
+    "Robot Navigation"
+  ],
+  "location": "Haifa, Israel",
+  "links": {
+    "Email": "mailto:hi@kongda.space",
+    "Phone": "tel:+9720587085802",
+    "Google Scholar": "https://scholar.google.com/citations?user=Ne-l-5MAAAAJ",
+    "ANPL": "https://anpl-technion.github.io/"
+  }
+}

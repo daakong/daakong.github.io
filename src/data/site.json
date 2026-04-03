@@ -1,0 +1,22 @@
+{
+  "siteUrl": "https://www.kongda.space",
+  "name": "Da Kong",
+  "nameZh": "孔达",
+  "title": "Da Kong - Academic Homepage",
+  "description": "Academic website for Da Kong (孔达), PhD student and robotics researcher at Technion.",
+  "tagline": "PhD student in belief-space planning and robot navigation at Technion",
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about" },
+    { "label": "Publications", "href": "/publications" },
+    { "label": "Education", "href": "/education" },
+    { "label": "Projects", "href": "/projects" },
+    { "label": "News", "href": "/news" }
+  ],
+  "social": [
+    { "label": "Email", "href": "mailto:hi@kongda.space" },
+    { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=Ne-l-5MAAAAJ" },
+    { "label": "ANPL Lab", "href": "https://anpl-technion.github.io/" },
+    { "label": "GitHub", "href": "https://github.com" }
+  ]
+}

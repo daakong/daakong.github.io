@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "course": "Introduction to State Estimation and SLAM",
+      "role": "Teaching Assistant",
+      "institution": "Technion - Israel Institute of Technology",
+      "period": "2024-09 - 2025-01",
+      "notes": "Lab sessions for localization and filtering basics.",
+      "topics": ["EKF", "Sensor Fusion", "SLAM"]
+    },
+    {
+      "course": "Mobile Robotics",
+      "role": "Teaching Assistant",
+      "institution": "Zhejiang University",
+      "period": "2019 - 2021",
+      "notes": "Tutorial support for navigation fundamentals and practical robotics demos.",
+      "topics": ["Robot Kinematics", "Path Planning", "Control"]
+    },
+    {
+      "course": "Computing for Autonomous Systems",
+      "role": "Guest Lecturer",
+      "institution": "Internal Research Group Sessions",
+      "period": "2025-01 - Present",
+      "notes": "Seminar on active perception and decision-theoretic planning.",
+      "topics": ["POMDP", "Active SLAM", "Decision Making"]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "generatedAt": "2026-04-02T00:00:00.000Z",
+  "items": [
+    {
+      "id": "kong2026wafr",
+      "title": "Open-loop pomdp simplification and safe skipping of replanning with formal performance guarantees",
+      "authors": [
+        "Da Kong",
+        "Vadim Indelman"
+      ],
+      "venue": "17th World Symposium on the Algorithmic Foundations of Robotics (WAFR)",
+      "year": 2026,
+      "type": "conference",
+      "month": "",
+      "note": "Accepted",
+      "arxiv": "2604.01352",
+      "links": [
+        { "label": "arXiv", "href": "https://arxiv.org/abs/2604.01352" }
+      ]
+    },
+    {
+      "id": "kong2024isrr",
+      "title": "Simplification of pomdp by adaptive structures with formal performance guarantees",
+      "authors": [
+        "Da Kong",
+        "Vadim Indelman"
+      ],
+      "venue": "International Symposium on Robotics Research (ISRR)",
+      "year": 2024,
+      "type": "conference",
+      "month": "Dec",
+      "note": "Accepted",
+      "arxiv": "2410.07630",
+      "links": [
+        { "label": "arXiv", "href": "https://arxiv.org/abs/2410.07630" }
+      ]
+    },
+    {
+      "id": "dai2021mmdeset",
+      "title": "A multi-spectral dataset for evaluating motion estimation systems",
+      "authors": [
+        "Weichen Dai",
+        "Yu Zhang",
+        "Shenzhou Chen",
+        "Donglei Sun",
+        "Da Kong"
+      ],
+      "venue": "Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)",
+      "year": 2021,
+      "type": "conference",
+      "month": "",
+      "note": "",
+      "arxiv": "2007.00622",
+      "links": [
+        { "label": "arXiv", "href": "https://arxiv.org/abs/2007.00622" },
+        { "label": "DOI", "href": "https://doi.org/10.1109/ICRA48506.2021.9561906" }
+      ]
+    },
+    {
+      "id": "kong2021nirdslam",
+      "title": "Direct Near-Infrared-Depth Visual SLAM with Active Lighting",
+      "authors": [
+        "Da Kong",
+        "Yu Zhang",
+        "Weichen Dai"
+      ],
+      "venue": "IEEE Robotics and Automation Letters",
+      "year": 2021,
+      "type": "journal",
+      "month": "",
+      "note": "Presented at IROS",
+      "arxiv": "",
+      "links": [
+        { "label": "DOI", "href": "https://doi.org/10.1109/LRA.2021.3096741" }
+      ]
+    },
+    {
+      "id": "liu2022visual",
+      "title": "A Visual Compass Based on Point and Line Features for UAV High-Altitude Orientation Estimation",
+      "authors": [
+        "Ying Liu",
+        "Junyi Tao",
+        "Da Kong",
+        "Yu Zhang",
+        "Ping Li"
+      ],
+      "venue": "Remote Sensing",
+      "year": 2022,
+      "type": "journal",
+      "month": "",
+      "note": "",
+      "arxiv": "",
+      "links": [
+        { "label": "DOI", "href": "https://doi.org/10.3390/rs14061430" }
+      ]
+    }
+  ]
+}
