@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "date": "2026-04-02",
+      "text": "Paper \"Open-loop POMDP simplification and safe skipping of replanning with formal performance guarantees\" was accepted to WAFR.",
+      "source": "WAFR"
+    },
+    {
+      "date": "2024-12-01",
+      "text": "Paper \"Simplification of POMDP by adaptive structures with formal performance guarantees\" was presented at ISRR 2024.",
+      "source": "ISRR"
+    },
+    {
+      "date": "2022-01-01",
+      "text": "Paper \"Direct Near-Infrared-Depth Visual SLAM with Active Lighting\" was published in IEEE RA-L and presented at IROS.",
+      "source": "IEEE RA-L"
+    },
+    {
+      "date": "2021-05-01",
+      "text": "Paper \"A Visual Compass Based on Point and Line Features for UAV High-Altitude Orientation Estimation\" was published in Remote Sensing.",
+      "source": "Remote Sensing"
+    }
+  ]
+}

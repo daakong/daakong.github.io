@@ -1,0 +1,100 @@
+---
+import site from '../data/site.json'
+import '../styles/global.css'
+
+const {
+  siteUrl,
+  name,
+  nameZh,
+  title: siteTitle,
+  description,
+  tagline,
+  navigation,
+  social,
+} = site
+
+const pageTitle = Astro.props.title ? `${Astro.props.title} | ${siteTitle}` : siteTitle
+const pageDescription = Astro.props.description || description
+const currentPath = Astro.url.pathname
+const canonical = new URL(currentPath, siteUrl).toString()
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/images/dk-logo.svg" />
+    <link rel="apple-touch-icon" href="/images/dk-logo.svg" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <header class="border-b border-sand-200 bg-white/85 backdrop-blur-md sticky top-0 z-20">
+        <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <a href="/" class="inline-flex items-center gap-3 text-left">
+            <img
+              src="/images/dk-logo.svg"
+              alt=""
+              class="h-10 w-10 rounded-full border border-slate-200 bg-white object-cover shadow-sm"
+            />
+            <span>
+              <p class="font-display text-lg font-semibold">{name} ({nameZh})</p>
+              <p class="text-sm text-slate-600">{tagline}</p>
+            </span>
+          </a>
+          <nav>
+            <ul class="flex flex-wrap items-center justify-start gap-2 text-sm font-medium sm:justify-end">
+              {navigation.map((item) => {
+                const isActive =
+                  currentPath === item.href || (item.href !== '/' && currentPath.startsWith(`${item.href}/`))
+
+                return (
+                  <li>
+                    <a
+                      href={item.href}
+                      class:list={[
+                        'rounded-full px-3 py-1.5',
+                        isActive ? 'bg-slate-900 text-white' : 'border border-transparent text-slate-700 hover:border-slate-300',
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="mx-auto w-full max-w-6xl flex-1 px-6 py-8 sm:py-12">
+        <slot />
+      </main>
+
+      <footer class="border-t border-sand-200 bg-white py-8">
+        <div class="mx-auto flex w-full max-w-6xl flex-col items-start gap-4 px-6 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-sm text-slate-600">© {new Date().getFullYear()} {name}. Academic homepage maintained on GitHub Pages.</p>
+          <div class="flex flex-wrap gap-3 text-sm">
+            {social.map((item) => (
+              <a
+                class="rounded-full border border-slate-200 px-3 py-1 hover:bg-slate-900 hover:text-white"
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

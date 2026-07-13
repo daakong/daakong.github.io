@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Monte Carlo Tree Search (MCTS)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        p, li {
+            font-size: 1.1em;
+            color: #555;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .step {
+            flex-basis: calc(50% - 20px); /* Two items per row */
+            background-color: #eaf5ff;
+            border: 1px solid #bde0ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Introduction to Monte Carlo Tree Search (MCTS)</h1>
+
+        <section id="what-is-mcts">
+            <h2>What is MCTS?</h2>
+            <p><strong>Monte Carlo Tree Search (MCTS)</strong> is a heuristic search algorithm used to find optimal decisions in certain decision-making processes. It excels in games, particularly in Go (e.g., AlphaGo), chess, and many other board games and real-time strategy games.</p>
+            <p>The core idea of MCTS is to <strong>intelligently explore the most promising decision paths by running many simulations (or "playouts")</strong> on an asymmetrically growing search tree. It combines the precision of tree search with the randomness of Monte Carlo simulation.</p>
+        </section>
+
+        <section id="four-steps">
+            <h2>The Four Core Steps of MCTS</h2>
+            <p>The MCTS algorithm builds its search tree by iteratively performing the following four steps:</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <h3>1. Selection</h3>
+                    <p>Starting from the root node, recursively select child nodes based on a policy (commonly <code>UCT</code> - Upper Confidence bounds applied to Trees) until a node is reached that is not fully expanded (i.e., has unvisited child nodes) or is a terminal node.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>2. Expansion</h3>
+                    <p>If the node stopped at in the "Selection" step is not a terminal node (e.g., game over), one or more new child nodes are created from this node to expand the search tree.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>3. Simulation (or Rollout)</h3>
+                    <p>From the newly expanded node, simulate a game using a (usually fast and random) policy until a terminal state is reached. This fast policy is known as the "Default Policy".</p>
+                </div>
+                
+                <div class="step">
+                    <h3>4. Backpropagation</h3>
+                    <p>The result of the simulation (e.g., win/loss/draw) is propagated backward from the expanded node along the path taken during the "Selection" step, all the way back to the root node. The statistics (e.g., visit count and win count) of all nodes on this path are updated.</p>
+                </div>
+            </div>
+            <p>The algorithm repeats these four steps thousands of times, continuously refining the search tree. Finally, the best next move is chosen based on the statistics of the root node's children (e.g., the one with the most visits or the highest win rate).</p>
+        </section>
+
+        <section id="applications">
+            <h2>Key Applications</h2>
+            <ul>
+                <li><strong>Board Games:</strong> Go (AlphaGo), Chess, Shogi, etc.</li>
+                <li><strong>Video Games:</strong> AI for Real-Time Strategy (RTS) games and turn-based games.</li>
+                <li><strong>General Decision Problems:</strong> Such as robotic path planning, solving Partially Observable Markov Decision Processes (POMDPs), etc.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>This is a static introductory page for MCTS.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

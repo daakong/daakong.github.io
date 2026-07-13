@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "name": "Belief-Space POMDP Simplification",
+      "status": "Ongoing",
+      "period": "2023-10 - Present",
+      "description": "Open-loop and adaptive-structure simplification for POMDPs with practical performance guarantees and safe replanning skipping.",
+      "keywords": ["POMDP", "Belief Space Planning", "Uncertainty", "Autonomy"]
+    },
+    {
+      "name": "Active Lighting SLAM",
+      "status": "Ongoing",
+      "period": "2021 - Present",
+      "description": "Near-infrared depth and active illumination based SLAM for robust localization and navigation in low-light environments.",
+      "keywords": ["SLAM", "Vision", "Active Perception"]
+    },
+    {
+      "name": "Motion Estimation Evaluation Datasets",
+      "status": "Completed",
+      "period": "2021",
+      "description": "Contributed to multi-spectral datasets and evaluation pipelines for motion estimation under challenging conditions.",
+      "keywords": ["Perception", "Dataset", "Motion Estimation", "Evaluation"]
+    }
+  ]
+}

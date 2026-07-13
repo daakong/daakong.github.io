@@ -1,0 +1,23 @@
+---
+import AcademicLayout from '../layouts/AcademicLayout.astro'
+import SectionTitle from '../components/SectionTitle.astro'
+import news from '../data/news.json'
+
+const items = [...news.items].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+---
+
+<AcademicLayout title="News" description="Latest updates and announcements.">
+  <SectionTitle title="News" subtitle="Selected academic updates" />
+
+  <section class="space-y-4">
+    {items.map((item) => (
+      <article class="card">
+        <div class="flex items-center justify-between gap-3">
+          <p class="font-medium">{item.text}</p>
+          <span class="chip">{item.date}</span>
+        </div>
+        <p class="mt-3 text-xs text-slate-500">Source: {item.source}</p>
+      </article>
+    ))}
+  </section>
+</AcademicLayout>

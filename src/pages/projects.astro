@@ -1,0 +1,27 @@
+---
+import AcademicLayout from '../layouts/AcademicLayout.astro'
+import SectionTitle from '../components/SectionTitle.astro'
+import projects from '../data/projects.json'
+
+const items = projects.items
+---
+
+<AcademicLayout title="Projects" description="Selected research projects.">
+  <SectionTitle title="Projects" subtitle="Research projects and direction" />
+
+  <section class="grid gap-4 md:grid-cols-2">
+    {items.map((project) => (
+      <article class="card">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="font-display text-lg font-semibold text-slate-900">{project.name}</h3>
+          <span class="chip">{project.status}</span>
+        </div>
+        <p class="mt-1 text-sm text-slate-500">{project.period}</p>
+        <p class="mt-4 text-slate-700">{project.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {project.keywords.map((keyword) => <span class="chip">{keyword}</span>)}
+        </div>
+      </article>
+    ))}
+  </section>
+</AcademicLayout>

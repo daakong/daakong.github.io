@@ -1,0 +1,15 @@
+---
+const { items } = Astro.props
+---
+<div class="timeline">
+  {items.map((entry) => (
+    <article class="timeline-item relative mb-8">
+      <p class="section-title">{entry.period}</p>
+      <h3 class="mt-1 font-display text-lg font-semibold">{entry.institution}</h3>
+      <p class="mt-1 text-sm font-medium text-slate-700">{entry.degree}</p>
+      {entry.advisor ? <p class="mt-1 text-sm text-slate-600">Advisor: {entry.advisor}</p> : null}
+      {entry.topic ? <p class="mt-1 text-sm text-slate-600">Topic: {entry.topic}</p> : null}
+      {entry.thesis ? <p class="mt-1 text-sm text-slate-600">Thesis: {entry.thesis}</p> : null}
+    </article>
+  ))}
+</div>
