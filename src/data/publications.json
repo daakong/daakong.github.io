@@ -43,7 +43,7 @@
     },
     {
       "id": "kong2024isrr",
-      "title": "Simplification of pomdp by adaptive structures with formal performance guarantees",
+      "title": "Simplified POMDP Planning with an Alternative Observation Space and Formal Performance Guarantees",
       "authors": [
         "Da Kong",
         "Vadim Indelman"
